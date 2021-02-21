@@ -9,19 +9,19 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private SessionInterceptor sessionInterceptor;
-    //还可以通过extends WebMvcConfigurationSupport
-    @Override
-    public void configurePathMatch(PathMatchConfigurer configurer) {
-        configurer.setUseSuffixPatternMatch(false);
-    }
+//     //还可以通过extends WebMvcConfigurationSupport
+//     @Override
+//     public void configurePathMatch(PathMatchConfigurer configurer) {
+//         configurer.setUseSuffixPatternMatch(false);
+//     }
 
-    //配置资源映射路径
-    @Override
-    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/**")
-                .addResourceLocations("classpath:/templates/")
-                .addResourceLocations("classpath:/static/");
-    }
+//     //配置资源映射路径
+//     @Override
+//     public void addResourceHandlers(ResourceHandlerRegistry registry) {
+//         registry.addResourceHandler("/**")
+//                 .addResourceLocations("classpath:/templates/")
+//                 .addResourceLocations("classpath:/static/");
+//     }
     @Override
     public  void addInterceptors(InterceptorRegistry registry){
         registry.addInterceptor(sessionInterceptor).addPathPatterns("/**");
